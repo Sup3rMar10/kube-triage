@@ -1,0 +1,363 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "web-7d9f8c6b5-z1x2c",
+        "namespace": "shop",
+        "uid": "uid-web-7d9f8c6b5-z1x2c",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "web",
+          "pod-template-hash": "7d9f8c6b5"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-7d9f8c6b5",
+            "uid": "uid-web-7d9f8c6b5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "registry.example.com/shop/app:1.4.2",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              }
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/healthz",
+                "port": 8080,
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "timeoutSeconds": 1,
+              "failureThreshold": 3,
+              "successThreshold": 1,
+              "initialDelaySeconds": 10
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/ready",
+                "port": 8080,
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "timeoutSeconds": 1,
+              "failureThreshold": 3,
+              "successThreshold": 1
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "registry.example.com/shop/app:1.4.2",
+            "imageID": "",
+            "ready": true,
+            "restartCount": 0,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {},
+            "started": true
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "web-7d9f8c6b5-v3b4n",
+        "namespace": "shop",
+        "uid": "uid-web-7d9f8c6b5-v3b4n",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "web",
+          "pod-template-hash": "7d9f8c6b5"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-7d9f8c6b5",
+            "uid": "uid-web-7d9f8c6b5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "registry.example.com/shop/app:1.4.2",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              }
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/healthz",
+                "port": 8080,
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "timeoutSeconds": 1,
+              "failureThreshold": 3,
+              "successThreshold": 1,
+              "initialDelaySeconds": 10
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/ready",
+                "port": 8080,
+                "scheme": "HTTP"
+              },
+              "periodSeconds": 10,
+              "timeoutSeconds": 1,
+              "failureThreshold": 3,
+              "successThreshold": 1
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "registry.example.com/shop/app:1.4.2",
+            "imageID": "",
+            "ready": true,
+            "restartCount": 0,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {},
+            "started": true
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-1",
+        "labels": {
+          "kubernetes.io/hostname": "worker-1"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-2",
+        "labels": {
+          "kubernetes.io/hostname": "worker-2"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-3",
+        "labels": {
+          "kubernetes.io/hostname": "worker-3"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    }
+  ]
+}

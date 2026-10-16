@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+# kubeconfigs and private notes never belong in the repo
+kubeconfig*
+*.kubeconfig
+INTERVIEW_PREP*

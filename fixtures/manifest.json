@@ -1,0 +1,288 @@
+{
+  "fixtures": [
+    {
+      "name": "dev-config-missing-key",
+      "file": "dev/config-missing-key.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "web-7d9f8c6b5-c4v5b",
+          "rule": "KT005",
+          "variant": "missing-configmap-key"
+        }
+      ],
+      "note": "key absent from ConfigMap"
+    },
+    {
+      "name": "dev-config-missing-secret",
+      "file": "dev/config-missing-secret.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "auth-7d9f8c6b5-n6m7k",
+          "rule": "KT005",
+          "variant": "missing-secret"
+        }
+      ],
+      "note": "Secret absent"
+    },
+    {
+      "name": "dev-crashloop-exit1",
+      "file": "dev/crashloop-exit1.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "api-7d9f8c6b5-x2k4p",
+          "rule": "KT001",
+          "variant": "exit-1"
+        },
+        {
+          "subject": "api-7d9f8c6b5-m8q7z",
+          "rule": "KT001",
+          "variant": "exit-1"
+        }
+      ],
+      "note": "Deployment with 2 replicas, both exit 1"
+    },
+    {
+      "name": "dev-crashloop-exit127",
+      "file": "dev/crashloop-exit127.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "worker-0",
+          "rule": "KT001",
+          "variant": "exit-127"
+        }
+      ],
+      "note": "StatefulSet pod, command not found"
+    },
+    {
+      "name": "dev-evicted-memory",
+      "file": "dev/evicted-memory.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "batch-7d9f8c6b5-e5v6c",
+          "rule": "KT007",
+          "variant": "memory"
+        }
+      ],
+      "note": "evicted for memory"
+    },
+    {
+      "name": "dev-healthy",
+      "file": "dev/healthy.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [],
+      "note": "nothing wrong: guards against false positives"
+    },
+    {
+      "name": "dev-imagepull-auth",
+      "file": "dev/imagepull-auth.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "billing-7d9f8c6b5-p1l2m",
+          "rule": "KT002",
+          "variant": "auth"
+        }
+      ],
+      "note": "auth"
+    },
+    {
+      "name": "dev-imagepull-registry-unreachable",
+      "file": "dev/imagepull-registry-unreachable.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "mailer-7d9f8c6b5-p1l2m",
+          "rule": "KT002",
+          "variant": "registry-unreachable"
+        }
+      ],
+      "note": "registry-unreachable"
+    },
+    {
+      "name": "dev-imagepull-tag-not-found",
+      "file": "dev/imagepull-tag-not-found.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "checkout-7d9f8c6b5-p1l2m",
+          "rule": "KT002",
+          "variant": "tag-not-found"
+        }
+      ],
+      "note": "tag-not-found"
+    },
+    {
+      "name": "dev-latest-no-limits",
+      "file": "dev/latest-no-limits.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "legacy-7d9f8c6b5-h7g8f",
+          "rule": "KT008",
+          "variant": "latest"
+        },
+        {
+          "subject": "legacy-7d9f8c6b5-h7g8f",
+          "rule": "KT009",
+          "variant": "no-memory-limit"
+        }
+      ],
+      "note": "hygiene findings"
+    },
+    {
+      "name": "dev-liveness-wrong-path",
+      "file": "dev/liveness-wrong-path.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "catalog-7d9f8c6b5-u1i2o",
+          "rule": "KT006",
+          "variant": "wrong-path"
+        }
+      ],
+      "note": "404 on liveness path"
+    },
+    {
+      "name": "dev-node-notready",
+      "file": "dev/node-notready.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "worker-2",
+          "rule": "KT010",
+          "variant": "not-ready"
+        }
+      ],
+      "note": "one node stopped reporting"
+    },
+    {
+      "name": "dev-oom-crashloop",
+      "file": "dev/oom-crashloop.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "report-7d9f8c6b5-q9w8e",
+          "rule": "KT003",
+          "variant": "limit-set"
+        }
+      ],
+      "note": "OOM then backoff: KT003 only"
+    },
+    {
+      "name": "dev-oom-running-restarts",
+      "file": "dev/oom-running-restarts.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "search-7d9f8c6b5-t5y6u",
+          "rule": "KT003",
+          "variant": "limit-set"
+        }
+      ],
+      "note": "Running again after OOM kills"
+    },
+    {
+      "name": "dev-pending-cpu-full",
+      "file": "dev/pending-cpu-full.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "ingest-7d9f8c6b5-k3j4h",
+          "rule": "KT004",
+          "variant": "insufficient-cpu"
+        }
+      ],
+      "note": "pending-cpu-full"
+    },
+    {
+      "name": "dev-pending-cpu-too-big",
+      "file": "dev/pending-cpu-too-big.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "trainer-7d9f8c6b5-k3j4h",
+          "rule": "KT004",
+          "variant": "cpu-exceeds-node-capacity"
+        }
+      ],
+      "note": "pending-cpu-too-big"
+    },
+    {
+      "name": "dev-pending-nodeselector",
+      "file": "dev/pending-nodeselector.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "cache-7d9f8c6b5-k3j4h",
+          "rule": "KT004",
+          "variant": "node-selector"
+        }
+      ],
+      "note": "pending-nodeselector"
+    },
+    {
+      "name": "dev-pending-pvc",
+      "file": "dev/pending-pvc.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "orders-db-7d9f8c6b5-k3j4h",
+          "rule": "KT004",
+          "variant": "unbound-pvc"
+        }
+      ],
+      "note": "pending-pvc"
+    },
+    {
+      "name": "dev-pending-taint",
+      "file": "dev/pending-taint.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "gpu-job-7d9f8c6b5-k3j4h",
+          "rule": "KT004",
+          "variant": "taint"
+        }
+      ],
+      "note": "pending-taint"
+    },
+    {
+      "name": "dev-readiness-wrong-port",
+      "file": "dev/readiness-wrong-port.json",
+      "split": "dev",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "portal-7d9f8c6b5-r8t9y",
+          "rule": "KT006",
+          "variant": "wrong-port"
+        }
+      ],
+      "note": "probe port not declared"
+    }
+  ]
+}

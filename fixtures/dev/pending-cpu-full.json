@@ -1,0 +1,238 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "ingest-7d9f8c6b5-k3j4h",
+        "namespace": "shop",
+        "uid": "uid-ingest-7d9f8c6b5-k3j4h",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "ingest",
+          "pod-template-hash": "7d9f8c6b5"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "ingest-7d9f8c6b5",
+            "uid": "uid-ingest-7d9f8c6b5",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "registry.example.com/shop/app:1.4.2",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              },
+              "requests": {
+                "cpu": "2",
+                "memory": "1Gi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30
+      },
+      "status": {
+        "phase": "Pending",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "False",
+            "reason": "Unschedulable",
+            "message": "0/3 nodes are available: 3 Insufficient cpu. preemption: 0/3 nodes are available: 3 No preemption victims found for incoming pod.",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": []
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Event",
+      "metadata": {
+        "name": "ingest-7d9f8c6b5-k3j4h.25ccfd12",
+        "namespace": "shop"
+      },
+      "involvedObject": {
+        "kind": "Pod",
+        "namespace": "shop",
+        "name": "ingest-7d9f8c6b5-k3j4h",
+        "uid": "uid-ingest-7d9f8c6b5-k3j4h"
+      },
+      "reason": "FailedScheduling",
+      "message": "0/3 nodes are available: 3 Insufficient cpu. preemption: 0/3 nodes are available: 3 No preemption victims found for incoming pod.",
+      "type": "Warning",
+      "count": 8,
+      "firstTimestamp": "2026-10-01T10:00:00Z",
+      "lastTimestamp": "2026-10-01T10:05:00Z",
+      "source": {
+        "component": "kubelet"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-1",
+        "labels": {
+          "kubernetes.io/hostname": "worker-1"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-2",
+        "labels": {
+          "kubernetes.io/hostname": "worker-2"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-3",
+        "labels": {
+          "kubernetes.io/hostname": "worker-3"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    }
+  ]
+}
