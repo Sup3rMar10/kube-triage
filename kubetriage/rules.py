@@ -123,14 +123,28 @@ _EXIT = {
 }
 
 
+def _restarting_after_exit(pod, st, cur) -> bool:
+    """Currently terminated, restarted at least twice, and the pod's restartPolicy will start it again."""
+    if not cur or int(st.get("restartCount") or 0) < 2 or pod_phase(pod) in ("Succeeded", "Failed"):
+        return False
+    policy = (pod.get("spec") or {}).get("restartPolicy", "Always")
+    return policy == "Always" or (policy == "OnFailure" and cur.get("exitCode") != 0)
+
+
 def rule_crashloop(pod, cluster):
     out = []
     probes = probe_failures(pod, cluster)
     for s in all_statuses(pod):
         st, name = s["status"], s["name"]
-        if waiting(st).get("reason") != "CrashLoopBackOff":
+        cur = terminated(st.get("state"))
+        if waiting(st).get("reason") == "CrashLoopBackOff":
+            src, last = "lastState", terminated(st.get("lastState"))
+        elif _restarting_after_exit(pod, st, cur):
+            # A looping container alternates between `waiting: CrashLoopBackOff` and `terminated`;
+            # a snapshot can land in the second phase, where the exit details are in `state`.
+            src, last = "state", cur
+        else:
             continue
-        last = terminated(st.get("lastState"))
         if last.get("reason") == "OOMKilled":
             continue  # KT003 owns it
         if (name, "liveness") in probes or (name, "startup") in probes:
@@ -144,11 +158,11 @@ def rule_crashloop(pod, cluster):
         else:
             variant, meaning, fixes = ("unknown", "is crashing but the pod has no lastState to say how.",
                                        ["Read the logs: kubectl logs {pod} -c {c} -n {ns} --previous"])
-        ev = [_kv(f"{s['path']}.state.waiting.reason", "CrashLoopBackOff")]
+        ev = [_kv(f"{s['path']}.state.waiting.reason", "CrashLoopBackOff")] if src == "lastState" else []
         if code is not None:
-            ev.append(_kv(f"{s['path']}.lastState.terminated.exitCode", code))
+            ev.append(_kv(f"{s['path']}.{src}.terminated.exitCode", code))
             if last.get("reason"):
-                ev.append(_kv(f"{s['path']}.lastState.terminated.reason", last["reason"]))
+                ev.append(_kv(f"{s['path']}.{src}.terminated.reason", last["reason"]))
         ev.append(_kv(f"{s['path']}.restartCount", st.get("restartCount", 0)))
         ran = _runtime_seconds(last)
         if ran is not None:

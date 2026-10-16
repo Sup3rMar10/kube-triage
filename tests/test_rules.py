@@ -61,6 +61,33 @@ def test_crashloop_in_init_container():
     assert f.rule == "KT001" and f.container == "migrate"
 
 
+def looping_between_restarts(code=1, restarts=5, policy="Always", phase="Running", reason="Error"):
+    """A crash loop caught while the container is in its `terminated` phase (found on a real cluster)."""
+    return pod("p", NS, phase=phase, restart_policy=policy,
+               statuses=[cstatus("app", IMG, state=term(code, reason=reason), last=term(code), restarts=restarts)])
+
+
+def test_crash_loop_caught_in_its_terminated_phase():
+    (f,) = run(looping_between_restarts(1))
+    assert (f.rule, f.variant) == ("KT001", "exit-1")
+    assert any(".state.terminated.exitCode = 1" in e for e in f.evidence)
+    assert not any("waiting.reason" in e for e in f.evidence)           # it is not in the waiting phase
+
+
+@pytest.mark.parametrize("kwargs", [
+    dict(restarts=1),                                  # one crash is not a loop yet
+    dict(policy="Never"),                              # nothing will restart it
+    dict(policy="OnFailure", code=0, reason="Completed"),   # finished successfully, will not restart
+    dict(phase="Succeeded"), dict(phase="Failed"),
+])
+def test_terminated_container_is_not_called_a_loop_without_evidence(kwargs):
+    assert not [f for f in run(looping_between_restarts(**kwargs)) if f.rule == "KT001"]
+
+
+def test_terminated_phase_oom_goes_to_kt003_not_kt001():
+    assert rules_of(run(looping_between_restarts(137, reason="OOMKilled"))) == [("KT003", "limit-set")]
+
+
 # ---- KT003 -----------------------------------------------------------------------------------------
 
 def test_oom_reports_limit_and_suggests_more():
