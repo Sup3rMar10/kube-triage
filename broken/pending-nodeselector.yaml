@@ -1,0 +1,27 @@
+# scenario: pending-nodeselector
+# expect: KT004/node-selector
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pending-nodeselector
+  namespace: kt-demo
+  labels: {kt-scenario: pending-nodeselector}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {kt-scenario: pending-nodeselector}
+  template:
+    metadata:
+      labels: {kt-scenario: pending-nodeselector}
+    spec:
+      tolerations:
+        - {key: kt-demo, operator: Exists}
+      nodeSelector:
+        disktype: ssd
+      containers:
+        - name: app
+          image: busybox:1.36
+          command: ["sh", "-c", "sleep 3600"]
+          resources:
+            limits: {memory: 64Mi}
+            requests: {memory: 32Mi, cpu: 10m}

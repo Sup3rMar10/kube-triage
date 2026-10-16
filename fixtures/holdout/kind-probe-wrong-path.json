@@ -1,0 +1,775 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-16T13:48:38Z",
+        "generateName": "probe-wrong-path-6d7bd484cb-",
+        "generation": 1,
+        "labels": {
+          "kt-scenario": "probe-wrong-path",
+          "pod-template-hash": "6d7bd484cb"
+        },
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t",
+        "namespace": "kt-demo",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "probe-wrong-path-6d7bd484cb",
+            "uid": "0a5a0c25-d5b8-4545-8347-735a0bf38141"
+          }
+        ],
+        "resourceVersion": "2361",
+        "uid": "c32f8e1e-1c74-4ca9-a0b0-66849d647ca1"
+      },
+      "spec": {
+        "containers": [
+          {
+            "command": [
+              "sh",
+              "-c",
+              "httpd -f -p 8080 -h /tmp"
+            ],
+            "image": "busybox:1.36",
+            "imagePullPolicy": "IfNotPresent",
+            "livenessProbe": {
+              "failureThreshold": 2,
+              "httpGet": {
+                "path": "/healthz",
+                "port": 8080,
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 5,
+              "periodSeconds": 5,
+              "successThreshold": 1,
+              "timeoutSeconds": 1
+            },
+            "name": "app",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "64Mi"
+              },
+              "requests": {
+                "cpu": "10m",
+                "memory": "32Mi"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-x8x4f",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "kubetriage-demo-control-plane",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+          {
+            "key": "kt-demo",
+            "operator": "Exists"
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "name": "kube-api-access-x8x4f",
+            "projected": {
+              "defaultMode": 420,
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "name": "kube-root-ca.crt"
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        },
+                        "path": "namespace"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "status": {
+        "allocatedResources": {
+          "cpu": "10m",
+          "memory": "32Mi"
+        },
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-16T13:48:39Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-16T13:48:38Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-16T13:48:58Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-16T13:48:58Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-16T13:48:38Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "10m",
+              "memory": "32Mi"
+            },
+            "containerID": "containerd://82f7048a64ccb1a7fc057b128f2a36c5e4318291aa0e75b610f1a19c261168c8",
+            "image": "docker.io/library/busybox:1.36",
+            "imageID": "docker.io/library/busybox@sha256:73aaf090f3d85aa34ee199857f03fa3a95c8ede2ffd4cc2cdb5b94e566b11662",
+            "lastState": {
+              "terminated": {
+                "containerID": "containerd://48bce9d72e4c08cc8547b52491cbd91519393e18564dab58d5e19e19463cf58b",
+                "exitCode": 137,
+                "finishedAt": "2026-10-16T13:55:14Z",
+                "reason": "Error",
+                "startedAt": "2026-10-16T13:51:09Z"
+              }
+            },
+            "name": "app",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "memory": "64Mi"
+              },
+              "requests": {
+                "cpu": "10m",
+                "memory": "32Mi"
+              }
+            },
+            "restartCount": 4,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-16T13:55:15Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  10
+                ],
+                "uid": 0
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-x8x4f",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.19.0.2",
+        "hostIPs": [
+          {
+            "ip": "172.19.0.2"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "10.244.0.14",
+        "podIPs": [
+          {
+            "ip": "10.244.0.14"
+          }
+        ],
+        "qosClass": "Burstable",
+        "resources": {
+          "limits": {
+            "memory": "64Mi"
+          },
+          "requests": {
+            "memory": "32Mi"
+          }
+        },
+        "startTime": "2026-10-16T13:48:38Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-16T13:48:38Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t",
+        "namespace": "kt-demo",
+        "resourceVersion": "1646",
+        "uid": "c32f8e1e-1c74-4ca9-a0b0-66849d647ca1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-16T13:48:38Z",
+      "message": "Successfully assigned kt-demo/probe-wrong-path-6d7bd484cb-lcp6t to kubetriage-demo-control-plane",
+      "metadata": {
+        "creationTimestamp": "2026-10-16T13:48:38Z",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t.18df06ad6cf4f684",
+        "namespace": "kt-demo",
+        "resourceVersion": "1654",
+        "uid": "8ca76cab-b56a-4689-b888-89b27add9dc4"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-16T13:48:39Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t",
+        "namespace": "kt-demo",
+        "resourceVersion": "1650",
+        "uid": "c32f8e1e-1c74-4ca9-a0b0-66849d647ca1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-16T13:48:39Z",
+      "message": "Pulling image \"busybox:1.36\"",
+      "metadata": {
+        "creationTimestamp": "2026-10-16T13:48:39Z",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t.18df06ad91d0f38a",
+        "namespace": "kt-demo",
+        "resourceVersion": "1683",
+        "uid": "0abf5ca3-f432-49e0-8f07-1e2d035830cd"
+      },
+      "reason": "Pulling",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "kubetriage-demo-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "kubetriage-demo-control-plane"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-16T13:48:58Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t",
+        "namespace": "kt-demo",
+        "resourceVersion": "1650",
+        "uid": "c32f8e1e-1c74-4ca9-a0b0-66849d647ca1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-16T13:48:58Z",
+      "message": "Successfully pulled image \"busybox:1.36\" in 1.573s (19.054s including waiting). Image size: 2217006 bytes.",
+      "metadata": {
+        "creationTimestamp": "2026-10-16T13:48:58Z",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t.18df06b2016fa6cf",
+        "namespace": "kt-demo",
+        "resourceVersion": "1811",
+        "uid": "c8687bd5-aef5-473f-bd27-006710298039"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "kubetriage-demo-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "kubetriage-demo-control-plane"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 5,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-16T13:48:58Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t",
+        "namespace": "kt-demo",
+        "resourceVersion": "1650",
+        "uid": "c32f8e1e-1c74-4ca9-a0b0-66849d647ca1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-16T13:55:14Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-16T13:48:58Z",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t.18df06b20a680ec6",
+        "namespace": "kt-demo",
+        "resourceVersion": "2359",
+        "uid": "95237661-4a2d-451f-99d6-5a0b18388952"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "kubetriage-demo-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "kubetriage-demo-control-plane"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 5,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-16T13:48:58Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t",
+        "namespace": "kt-demo",
+        "resourceVersion": "1650",
+        "uid": "c32f8e1e-1c74-4ca9-a0b0-66849d647ca1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-16T13:55:15Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-16T13:48:58Z",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t.18df06b224bbf34f",
+        "namespace": "kt-demo",
+        "resourceVersion": "2360",
+        "uid": "24d112c5-9f9e-473e-b5e3-161367bb97db"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "kubetriage-demo-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "kubetriage-demo-control-plane"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 9,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-16T13:49:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t",
+        "namespace": "kt-demo",
+        "resourceVersion": "1650",
+        "uid": "c32f8e1e-1c74-4ca9-a0b0-66849d647ca1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-16T13:55:24Z",
+      "message": "Liveness probe failed: HTTP probe failed with statuscode: 404",
+      "metadata": {
+        "creationTimestamp": "2026-10-16T13:49:03Z",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t.18df06b3536cb6a3",
+        "namespace": "kt-demo",
+        "resourceVersion": "2389",
+        "uid": "b0730565-f90f-4b8c-bfd7-d6e3a812966f"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "kubetriage-demo-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "kubetriage-demo-control-plane"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 4,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-16T13:49:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t",
+        "namespace": "kt-demo",
+        "resourceVersion": "1650",
+        "uid": "c32f8e1e-1c74-4ca9-a0b0-66849d647ca1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-16T13:51:23Z",
+      "message": "Container app failed liveness probe, will be restarted",
+      "metadata": {
+        "creationTimestamp": "2026-10-16T13:49:09Z",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t.18df06b47d81d661",
+        "namespace": "kt-demo",
+        "resourceVersion": "2266",
+        "uid": "fd688651-ed4a-410b-a680-009f6906cdb3"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "kubetriage-demo-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "kubetriage-demo-control-plane"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 4,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-16T13:49:39Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t",
+        "namespace": "kt-demo",
+        "resourceVersion": "1650",
+        "uid": "c32f8e1e-1c74-4ca9-a0b0-66849d647ca1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-16T13:55:14Z",
+      "message": "Container image \"busybox:1.36\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-16T13:49:39Z",
+        "name": "probe-wrong-path-6d7bd484cb-lcp6t.18df06bb81adf794",
+        "namespace": "kt-demo",
+        "resourceVersion": "2358",
+        "uid": "ec192295-e504-4f67-bb50-e13473856dcf"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "kubetriage-demo-control-plane",
+      "source": {
+        "component": "kubelet",
+        "host": "kubetriage-demo-control-plane"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "node.alpha.kubernetes.io/ttl": "0",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-10-16T13:36:26Z",
+        "labels": {
+          "beta.kubernetes.io/arch": "amd64",
+          "beta.kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "amd64",
+          "kubernetes.io/hostname": "kubetriage-demo-control-plane",
+          "kubernetes.io/os": "linux",
+          "node-role.kubernetes.io/control-plane": ""
+        },
+        "name": "kubetriage-demo-control-plane",
+        "resourceVersion": "1863",
+        "uid": "e78158e1-1cd3-4326-99ab-7eee3b87969c"
+      },
+      "spec": {
+        "podCIDR": "10.244.0.0/24",
+        "podCIDRs": [
+          "10.244.0.0/24"
+        ],
+        "providerID": "kind://docker/kubetriage-demo/kubetriage-demo-control-plane",
+        "taints": [
+          {
+            "effect": "NoSchedule",
+            "key": "kt-demo",
+            "value": "true"
+          }
+        ]
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "172.19.0.2",
+            "type": "InternalIP"
+          },
+          {
+            "address": "kubetriage-demo-control-plane",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "8",
+          "ephemeral-storage": "1081101176832",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "7984764Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "8",
+          "ephemeral-storage": "1081101176832",
+          "hugepages-1Gi": "0",
+          "hugepages-2Mi": "0",
+          "memory": "7984764Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-10-16T13:49:05Z",
+            "lastTransitionTime": "2026-10-16T13:36:24Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-10-16T13:49:05Z",
+            "lastTransitionTime": "2026-10-16T13:36:24Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-10-16T13:49:05Z",
+            "lastTransitionTime": "2026-10-16T13:36:24Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-10-16T13:49:05Z",
+            "lastTransitionTime": "2026-10-16T13:36:48Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "declaredFeatures": [
+          "ExtendWebSocketsToKubelet",
+          "InPlacePodLevelResourcesVerticalScaling",
+          "InPlacePodVerticalScalingInitContainers",
+          "RestartAllContainersOnContainerExits"
+        ],
+        "features": {
+          "supplementalGroupsPolicy": true
+        },
+        "images": [
+          {
+            "names": [
+              "docker.io/library/import-2026-08-26@sha256:eff360f86083f21c9ceaa64cbaa2e4d439d9e7e1d6834c21d25daac35e58015b",
+              "registry.k8s.io/kube-apiserver-amd64:v1.37.0",
+              "registry.k8s.io/kube-apiserver:v1.37.0"
+            ],
+            "sizeBytes": 104328436
+          },
+          {
+            "names": [
+              "docker.io/library/import-2026-08-26@sha256:79bd77de40aa3294690796f94cdc8a08c4cf6a51a6a3500425c56c9e13622cc7",
+              "registry.k8s.io/kube-controller-manager-amd64:v1.37.0",
+              "registry.k8s.io/kube-controller-manager:v1.37.0"
+            ],
+            "sizeBytes": 91037796
+          },
+          {
+            "names": [
+              "docker.io/library/import-2026-08-26@sha256:1aa5cce2a7d436c309f705cf2a32a50f8378a2b6f2e5dd4bb26f81c714dd0b86",
+              "registry.k8s.io/kube-proxy-amd64:v1.37.0",
+              "registry.k8s.io/kube-proxy:v1.37.0"
+            ],
+            "sizeBytes": 82823264
+          },
+          {
+            "names": [
+              "docker.io/library/import-2026-08-26@sha256:213e68034d4be2f89076d1d446501434d1bfdff862916392708f095f5fecb6e1",
+              "registry.k8s.io/kube-scheduler-amd64:v1.37.0",
+              "registry.k8s.io/kube-scheduler:v1.37.0"
+            ],
+            "sizeBytes": 62688989
+          },
+          {
+            "names": [
+              "docker.io/kindest/kindnetd:v20260820-69b56db7"
+            ],
+            "sizeBytes": 39744255
+          },
+          {
+            "names": [
+              "registry.k8s.io/coredns/coredns:v1.14.6"
+            ],
+            "sizeBytes": 23758055
+          },
+          {
+            "names": [
+              "registry.k8s.io/etcd:3.7.0-0"
+            ],
+            "sizeBytes": 22342384
+          },
+          {
+            "names": [
+              "docker.io/kindest/local-path-provisioner:v20260820-69b56db7"
+            ],
+            "sizeBytes": 15868133
+          },
+          {
+            "names": [
+              "docker.io/kindest/local-path-helper:v20260131-7181c60a"
+            ],
+            "sizeBytes": 2872608
+          },
+          {
+            "names": [
+              "docker.io/library/busybox@sha256:fd7dc98638c8e305f4dc34e979f1c0fdfdcaeb0fbf8fcff77ae834b6da3d7e6e",
+              "docker.io/library/busybox:latest"
+            ],
+            "sizeBytes": 2236767
+          },
+          {
+            "names": [
+              "docker.io/library/busybox@sha256:73aaf090f3d85aa34ee199857f03fa3a95c8ede2ffd4cc2cdb5b94e566b11662",
+              "docker.io/library/busybox:1.36"
+            ],
+            "sizeBytes": 2217006
+          },
+          {
+            "names": [
+              "registry.k8s.io/pause:3.10"
+            ],
+            "sizeBytes": 320368
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "amd64",
+          "bootID": "028228bc-9cdf-4c6b-8a3e-4bec9e3167ee",
+          "containerRuntimeVersion": "containerd://2.3.4",
+          "kernelVersion": "6.18.33.2-microsoft-standard-WSL2",
+          "kubeProxyVersion": "",
+          "kubeletVersion": "v1.37.0",
+          "machineID": "16c71324c97c42cd81f520b5e4f4ce41",
+          "operatingSystem": "linux",
+          "osImage": "Debian GNU/Linux 13 (trixie)",
+          "runningInUserNamespace": false,
+          "swap": {
+            "capacity": 2147483648
+          },
+          "systemUUID": "16c71324c97c42cd81f520b5e4f4ce41"
+        },
+        "runtimeHandlers": [
+          {
+            "features": {
+              "recursiveReadOnlyMounts": true,
+              "userNamespaces": true
+            },
+            "name": ""
+          },
+          {
+            "features": {
+              "recursiveReadOnlyMounts": true,
+              "userNamespaces": true
+            },
+            "name": "runc"
+          },
+          {
+            "features": {
+              "recursiveReadOnlyMounts": true,
+              "userNamespaces": true
+            },
+            "name": "test-handler"
+          }
+        ]
+      }
+    }
+  ]
+}

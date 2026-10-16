@@ -1,0 +1,23 @@
+# scenario: pending-taint
+# expect: KT004/taint
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pending-taint
+  namespace: kt-demo
+  labels: {kt-scenario: pending-taint}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {kt-scenario: pending-taint}
+  template:
+    metadata:
+      labels: {kt-scenario: pending-taint}
+    spec:
+      containers:
+        - name: app
+          image: busybox:1.36
+          command: ["sh", "-c", "sleep 3600"]
+          resources:
+            limits: {memory: 64Mi}
+            requests: {memory: 32Mi, cpu: 10m}

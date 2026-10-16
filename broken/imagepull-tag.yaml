@@ -1,0 +1,25 @@
+# scenario: imagepull-tag
+# expect: KT002/tag-not-found
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imagepull-tag
+  namespace: kt-demo
+  labels: {kt-scenario: imagepull-tag}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {kt-scenario: imagepull-tag}
+  template:
+    metadata:
+      labels: {kt-scenario: imagepull-tag}
+    spec:
+      tolerations:
+        - {key: kt-demo, operator: Exists}
+      containers:
+        - name: app
+          image: busybox:1.36-no-such-tag
+          command: ["sh", "-c", "sleep 3600"]
+          resources:
+            limits: {memory: 64Mi}
+            requests: {memory: 32Mi, cpu: 10m}

@@ -1,0 +1,30 @@
+# scenario: probe-wrong-port
+# expect: KT006/wrong-port
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probe-wrong-port
+  namespace: kt-demo
+  labels: {kt-scenario: probe-wrong-port}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {kt-scenario: probe-wrong-port}
+  template:
+    metadata:
+      labels: {kt-scenario: probe-wrong-port}
+    spec:
+      tolerations:
+        - {key: kt-demo, operator: Exists}
+      containers:
+        - name: app
+          image: busybox:1.36
+          command: ["sh", "-c", "httpd -f -p 8080 -h /tmp"]
+          ports:
+            - {containerPort: 8080}
+          readinessProbe:
+            httpGet: {path: /, port: 80}
+            periodSeconds: 5
+          resources:
+            limits: {memory: 64Mi}
+            requests: {memory: 32Mi, cpu: 10m}

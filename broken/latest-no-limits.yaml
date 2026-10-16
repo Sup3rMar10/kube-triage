@@ -1,0 +1,24 @@
+# scenario: latest-no-limits
+# expect: KT008/latest,KT009/no-memory-limit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: latest-no-limits
+  namespace: kt-demo
+  labels: {kt-scenario: latest-no-limits}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {kt-scenario: latest-no-limits}
+  template:
+    metadata:
+      labels: {kt-scenario: latest-no-limits}
+    spec:
+      tolerations:
+        - {key: kt-demo, operator: Exists}
+      containers:
+        - name: app
+          image: busybox:latest
+          command: ["sh", "-c", "sleep 3600"]
+          resources:
+            requests: {memory: 16Mi, cpu: 10m}

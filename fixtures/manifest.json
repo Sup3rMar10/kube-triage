@@ -405,6 +405,215 @@
       "note": "Init:CrashLoopBackOff"
     },
     {
+      "name": "holdout-kind-config-missing-key",
+      "file": "holdout/kind-config-missing-key.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "config-missing-key-56f6dc88b-mnhck",
+          "rule": "KT005",
+          "variant": "missing-configmap-key"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/config-missing-key.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-config-missing-secret",
+      "file": "holdout/kind-config-missing-secret.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "config-missing-secret-bb6687fff-gqwtj",
+          "rule": "KT005",
+          "variant": "missing-secret"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/config-missing-secret.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-crashloop-exit1",
+      "file": "holdout/kind-crashloop-exit1.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "crashloop-exit1-6cbcdd67c8-dqkrg",
+          "rule": "KT001",
+          "variant": "exit-1"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/crashloop-exit1.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-crashloop-exit127",
+      "file": "holdout/kind-crashloop-exit127.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "crashloop-exit127-65d45b7d5d-vfsrg",
+          "rule": "KT001",
+          "variant": "exit-127"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/crashloop-exit127.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-healthy",
+      "file": "holdout/kind-healthy.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/healthy.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-imagepull-host",
+      "file": "holdout/kind-imagepull-host.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "imagepull-host-54b9f5fb8b-xzcfr",
+          "rule": "KT002",
+          "variant": "registry-unreachable"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/imagepull-host.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-imagepull-tag",
+      "file": "holdout/kind-imagepull-tag.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "imagepull-tag-78c848d767-94z2j",
+          "rule": "KT002",
+          "variant": "tag-not-found"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/imagepull-tag.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-latest-no-limits",
+      "file": "holdout/kind-latest-no-limits.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "latest-no-limits-6b6fdd76c-8vgrv",
+          "rule": "KT008",
+          "variant": "latest"
+        },
+        {
+          "subject": "latest-no-limits-6b6fdd76c-8vgrv",
+          "rule": "KT009",
+          "variant": "no-memory-limit"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/latest-no-limits.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-oom-killed",
+      "file": "holdout/kind-oom-killed.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "oom-killed-6898f964b4-kkgm4",
+          "rule": "KT003",
+          "variant": "limit-set"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/oom-killed.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-pending-cpu",
+      "file": "holdout/kind-pending-cpu.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "pending-cpu-7f49d4ff86-rfzwn",
+          "rule": "KT004",
+          "variant": "cpu-exceeds-node-capacity"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/pending-cpu.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-pending-nodeselector",
+      "file": "holdout/kind-pending-nodeselector.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "pending-nodeselector-67588f4644-pbnd7",
+          "rule": "KT004",
+          "variant": "node-selector"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/pending-nodeselector.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-pending-pvc",
+      "file": "holdout/kind-pending-pvc.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "pending-pvc-7d67bd7dd6-wqv5t",
+          "rule": "KT004",
+          "variant": "unbound-pvc"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/pending-pvc.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-pending-taint",
+      "file": "holdout/kind-pending-taint.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "pending-taint-79bc6f9467-pk6t5",
+          "rule": "KT004",
+          "variant": "taint"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/pending-taint.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-probe-wrong-path",
+      "file": "holdout/kind-probe-wrong-path.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "probe-wrong-path-6d7bd484cb-lcp6t",
+          "rule": "KT006",
+          "variant": "wrong-path"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/probe-wrong-path.yaml before capture"
+    },
+    {
+      "name": "holdout-kind-probe-wrong-port",
+      "file": "holdout/kind-probe-wrong-port.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "probe-wrong-port-5bbc79c4fd-nlj9v",
+          "rule": "KT006",
+          "variant": "wrong-port"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/probe-wrong-port.yaml before capture"
+    },
+    {
       "name": "holdout-liveness-no-initial-delay",
       "file": "holdout/liveness-no-initial-delay.json",
       "split": "holdout",

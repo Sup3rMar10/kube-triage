@@ -7,9 +7,9 @@
       "kind": 0
     },
     "holdout": {
-      "count": 17,
+      "count": 32,
       "hand": 17,
-      "kind": 0
+      "kind": 15
     }
   },
   "splits": {
@@ -113,30 +113,30 @@
     },
     "holdout": {
       "overall": {
-        "tp": 17,
+        "tp": 29,
         "fp": 0,
-        "fn": 0,
+        "fn": 3,
         "precision": 1.0,
-        "recall": 1.0,
+        "recall": 0.906,
         "precision_ci95": [
-          0.816,
+          0.883,
           1.0
         ],
         "recall_ci95": [
-          0.816,
-          1.0
+          0.758,
+          0.968
         ]
       },
       "per_rule": {
         "KT001": {
           "tp": 4,
           "fp": 0,
-          "fn": 0,
+          "fn": 2,
           "precision": 1.0,
-          "recall": 1.0
+          "recall": 0.667
         },
         "KT002": {
-          "tp": 2,
+          "tp": 4,
           "fp": 0,
           "fn": 0,
           "precision": 1.0,
@@ -145,26 +145,26 @@
         "KT003": {
           "tp": 1,
           "fp": 0,
-          "fn": 0,
+          "fn": 1,
           "precision": 1.0,
-          "recall": 1.0
+          "recall": 0.5
         },
         "KT004": {
-          "tp": 2,
+          "tp": 6,
           "fp": 0,
           "fn": 0,
           "precision": 1.0,
           "recall": 1.0
         },
         "KT005": {
-          "tp": 2,
+          "tp": 4,
           "fp": 0,
           "fn": 0,
           "precision": 1.0,
           "recall": 1.0
         },
         "KT006": {
-          "tp": 3,
+          "tp": 5,
           "fp": 0,
           "fn": 0,
           "precision": 1.0,
@@ -177,8 +177,15 @@
           "precision": 1.0,
           "recall": 1.0
         },
-        "KT009": {
+        "KT008": {
           "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT009": {
+          "tp": 2,
           "fp": 0,
           "fn": 0,
           "precision": 1.0,
@@ -193,18 +200,40 @@
         }
       },
       "variant_accuracy": {
-        "correct": 17,
-        "total": 17,
+        "correct": 29,
+        "total": 29,
         "accuracy": 1.0
       },
       "fixtures_exact": {
-        "exact": 17,
-        "total": 17
+        "exact": 29,
+        "total": 32
       }
     }
   },
   "mismatches": {
     "dev": [],
-    "holdout": []
+    "holdout": [
+      {
+        "fixture": "holdout-kind-crashloop-exit1",
+        "kind": "missed",
+        "subject": "crashloop-exit1-6cbcdd67c8-dqkrg",
+        "rule": "KT001",
+        "expected": "exit-1"
+      },
+      {
+        "fixture": "holdout-kind-crashloop-exit127",
+        "kind": "missed",
+        "subject": "crashloop-exit127-65d45b7d5d-vfsrg",
+        "rule": "KT001",
+        "expected": "exit-127"
+      },
+      {
+        "fixture": "holdout-kind-oom-killed",
+        "kind": "missed",
+        "subject": "oom-killed-6898f964b4-kkgm4",
+        "rule": "KT003",
+        "expected": "limit-set"
+      }
+    ]
   }
 }

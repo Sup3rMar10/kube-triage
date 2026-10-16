@@ -1,0 +1,32 @@
+# scenario: probe-wrong-path
+# expect: KT006/wrong-path
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probe-wrong-path
+  namespace: kt-demo
+  labels: {kt-scenario: probe-wrong-path}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {kt-scenario: probe-wrong-path}
+  template:
+    metadata:
+      labels: {kt-scenario: probe-wrong-path}
+    spec:
+      tolerations:
+        - {key: kt-demo, operator: Exists}
+      containers:
+        - name: app
+          image: busybox:1.36
+          command: ["sh", "-c", "httpd -f -p 8080 -h /tmp"]
+          ports:
+            - {containerPort: 8080}
+          livenessProbe:
+            httpGet: {path: /healthz, port: 8080}
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 2
+          resources:
+            limits: {memory: 64Mi}
+            requests: {memory: 32Mi, cpu: 10m}

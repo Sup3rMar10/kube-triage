@@ -1,0 +1,25 @@
+# scenario: oom-killed
+# expect: KT003/limit-set
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oom-killed
+  namespace: kt-demo
+  labels: {kt-scenario: oom-killed}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {kt-scenario: oom-killed}
+  template:
+    metadata:
+      labels: {kt-scenario: oom-killed}
+    spec:
+      tolerations:
+        - {key: kt-demo, operator: Exists}
+      containers:
+        - name: app
+          image: busybox:1.36
+          command: ["sh", "-c", "dd if=/dev/zero of=/dev/shm/fill bs=1M count=60; sleep 3600"]
+          resources:
+            limits: {memory: 24Mi}
+            requests: {memory: 16Mi}

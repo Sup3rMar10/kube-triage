@@ -1,0 +1,170 @@
+{
+  "scenarios": 15,
+  "passed": 12,
+  "seconds": 409,
+  "results": {
+    "config-missing-key": {
+      "expected": [
+        "KT005/missing-configmap-key"
+      ],
+      "found": [
+        "KT005/missing-configmap-key"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "config-missing-secret": {
+      "expected": [
+        "KT005/missing-secret"
+      ],
+      "found": [
+        "KT005/missing-secret"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "crashloop-exit1": {
+      "expected": [
+        "KT001/exit-1"
+      ],
+      "found": [],
+      "missing": [
+        "KT001/exit-1"
+      ],
+      "extras": [],
+      "passed": false
+    },
+    "crashloop-exit127": {
+      "expected": [
+        "KT001/exit-127"
+      ],
+      "found": [],
+      "missing": [
+        "KT001/exit-127"
+      ],
+      "extras": [],
+      "passed": false
+    },
+    "healthy": {
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "imagepull-host": {
+      "expected": [
+        "KT002/registry-unreachable"
+      ],
+      "found": [
+        "KT002/registry-unreachable"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "imagepull-tag": {
+      "expected": [
+        "KT002/tag-not-found"
+      ],
+      "found": [
+        "KT002/tag-not-found"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "latest-no-limits": {
+      "expected": [
+        "KT008/latest",
+        "KT009/no-memory-limit"
+      ],
+      "found": [
+        "KT008/latest",
+        "KT009/no-memory-limit"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "oom-killed": {
+      "expected": [
+        "KT003/limit-set"
+      ],
+      "found": [],
+      "missing": [
+        "KT003/limit-set"
+      ],
+      "extras": [],
+      "passed": false
+    },
+    "pending-cpu": {
+      "expected": [
+        "KT004/cpu-exceeds-node-capacity"
+      ],
+      "found": [
+        "KT004/cpu-exceeds-node-capacity"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "pending-nodeselector": {
+      "expected": [
+        "KT004/node-selector"
+      ],
+      "found": [
+        "KT004/node-selector"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "pending-pvc": {
+      "expected": [
+        "KT004/unbound-pvc"
+      ],
+      "found": [
+        "KT004/unbound-pvc"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "pending-taint": {
+      "expected": [
+        "KT004/taint"
+      ],
+      "found": [
+        "KT004/taint"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "probe-wrong-path": {
+      "expected": [
+        "KT006/wrong-path"
+      ],
+      "found": [
+        "KT006/wrong-path"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    },
+    "probe-wrong-port": {
+      "expected": [
+        "KT006/wrong-port"
+      ],
+      "found": [
+        "KT006/wrong-port"
+      ],
+      "missing": [],
+      "extras": [],
+      "passed": true
+    }
+  }
+}
