@@ -1,0 +1,304 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "ledger-0",
+        "namespace": "payments",
+        "uid": "uid-ledger-0",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "ledger-0"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "ledger",
+            "uid": "uid-ledger",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "registry.example.com/payments/ledger@sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "registry.example.com/payments/ledger@sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "imageID": "",
+            "ready": true,
+            "restartCount": 0,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "agent-x1y2z",
+        "namespace": "kube-system",
+        "uid": "uid-agent-x1y2z",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "agent-x1y2z"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "agent",
+            "uid": "uid-agent",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "agent",
+            "image": "registry.example.com/ops/agent:5.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "64Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "agent",
+            "image": "registry.example.com/ops/agent:5.0",
+            "imageID": "",
+            "ready": true,
+            "restartCount": 0,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "backup-28765432-abcde",
+        "namespace": "payments",
+        "uid": "uid-backup-28765432-abcde",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "backup-28765432-abcde"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "Job",
+            "name": "backup-28765432",
+            "uid": "uid-backup-28765432",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "backup",
+            "image": "registry.example.com/ops/backup:latest",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {}
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Succeeded",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "backup",
+            "image": "registry.example.com/ops/backup:latest",
+            "imageID": "",
+            "ready": false,
+            "restartCount": 0,
+            "state": {
+              "terminated": {
+                "exitCode": 0,
+                "reason": "Completed",
+                "startedAt": "2026-10-01T10:00:00Z",
+                "finishedAt": "2026-10-01T10:00:02Z",
+                "containerID": "containerd://abababababababababababababababababababababababababababababababab"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-1",
+        "labels": {
+          "kubernetes.io/hostname": "worker-1"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    }
+  ]
+}

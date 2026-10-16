@@ -283,6 +283,243 @@
         }
       ],
       "note": "probe port not declared"
+    },
+    {
+      "name": "holdout-config-missing-configmap",
+      "file": "holdout/config-missing-configmap.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "flags-2c1b0a9f8-r5r6r",
+          "rule": "KT005",
+          "variant": "missing-configmap"
+        }
+      ],
+      "note": "whole ConfigMap absent"
+    },
+    {
+      "name": "holdout-crashloop-exit0",
+      "file": "holdout/crashloop-exit0.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "cron-like-6d5c4b3a2-aa11b",
+          "rule": "KT001",
+          "variant": "exit-0"
+        }
+      ],
+      "note": "finishes and is restarted"
+    },
+    {
+      "name": "holdout-crashloop-segfault-139",
+      "file": "holdout/crashloop-segfault-139.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "native-5c8b9d7f4-q2w3e",
+          "rule": "KT001",
+          "variant": "exit-139"
+        }
+      ],
+      "note": "SIGSEGV"
+    },
+    {
+      "name": "holdout-crashloop-sigterm-143",
+      "file": "holdout/crashloop-sigterm-143.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "queue-1",
+          "rule": "KT001",
+          "variant": "exit-143"
+        }
+      ],
+      "note": "StatefulSet, SIGTERM"
+    },
+    {
+      "name": "holdout-evicted-ephemeral-storage",
+      "file": "holdout/evicted-ephemeral-storage.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "batch-9e8d7c6b5-u3u4u",
+          "rule": "KT007",
+          "variant": "ephemeral-storage"
+        }
+      ],
+      "note": "ephemeral storage eviction"
+    },
+    {
+      "name": "holdout-failedmount-secret",
+      "file": "holdout/failedmount-secret.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "web-1d0c9b8a7-t7t8t",
+          "rule": "KT005",
+          "variant": "missing-secret"
+        }
+      ],
+      "note": "volume Secret absent"
+    },
+    {
+      "name": "holdout-healthy-mixed-owners",
+      "file": "holdout/healthy-mixed-owners.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [],
+      "note": "no findings, several owner kinds, a completed Job pod"
+    },
+    {
+      "name": "holdout-imagepull-invalid-name",
+      "file": "holdout/imagepull-invalid-name.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "shouty-4b3a29180-x9y8z",
+          "rule": "KT002",
+          "variant": "invalid-image-name"
+        }
+      ],
+      "note": "uppercase repo"
+    },
+    {
+      "name": "holdout-init-container-crashloop",
+      "file": "holdout/init-container-crashloop.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "app-4d3c2b1a0-i1i2i",
+          "rule": "KT001",
+          "variant": "exit-1"
+        }
+      ],
+      "note": "Init:CrashLoopBackOff"
+    },
+    {
+      "name": "holdout-liveness-no-initial-delay",
+      "file": "holdout/liveness-no-initial-delay.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "slowstart-3c2b1a0f9-s1s2s",
+          "rule": "KT006",
+          "variant": "initial-delay-too-short"
+        }
+      ],
+      "note": "slow starter killed early"
+    },
+    {
+      "name": "holdout-liveness-timeout-killing",
+      "file": "holdout/liveness-timeout-killing.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "api-8f7e6d5c4-zz90a",
+          "rule": "KT006",
+          "variant": "timeout"
+        }
+      ],
+      "note": "probe kills a slow container"
+    },
+    {
+      "name": "holdout-node-memory-pressure",
+      "file": "holdout/node-memory-pressure.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "w-2",
+          "rule": "KT010",
+          "variant": "memory-pressure"
+        }
+      ],
+      "note": "kubelet reports MemoryPressure"
+    },
+    {
+      "name": "holdout-oom-no-limit",
+      "file": "holdout/oom-no-limit.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "worker-3a2b1c0d9-m1n2o",
+          "rule": "KT003",
+          "variant": "no-limit"
+        },
+        {
+          "subject": "worker-3a2b1c0d9-m1n2o",
+          "rule": "KT009",
+          "variant": "no-memory-limit"
+        }
+      ],
+      "note": "OOM kill without a limit"
+    },
+    {
+      "name": "holdout-pending-hostport",
+      "file": "holdout/pending-hostport.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "proxy-5f4e3d2c1-w1w2w",
+          "rule": "KT004",
+          "variant": "no-free-ports"
+        }
+      ],
+      "note": "hostPort taken everywhere"
+    },
+    {
+      "name": "holdout-pending-mixed-reasons",
+      "file": "holdout/pending-mixed-reasons.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "analytics-7a6b5c4d3-k1k2k",
+          "rule": "KT004",
+          "variant": "taint"
+        }
+      ],
+      "note": "taint dominates a mixed message"
+    },
+    {
+      "name": "holdout-readiness-503",
+      "file": "holdout/readiness-503.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "gateway-0b9a8c7d6-v5v6v",
+          "rule": "KT006",
+          "variant": "app-unhealthy"
+        }
+      ],
+      "note": "5xx from the health endpoint"
+    },
+    {
+      "name": "holdout-rollout-one-bad-pod",
+      "file": "holdout/rollout-one-bad-pod.json",
+      "split": "holdout",
+      "source": "hand",
+      "expected": [
+        {
+          "subject": "billing-7b6c5d4e3-ccccc",
+          "rule": "KT002",
+          "variant": "repo-or-auth"
+        }
+      ],
+      "note": "only the new pod is flagged"
     }
   ]
 }

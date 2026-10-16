@@ -1,0 +1,210 @@
+{
+  "kubetriage_version": "0.1.0",
+  "fixtures": {
+    "dev": {
+      "count": 20,
+      "hand": 20,
+      "kind": 0
+    },
+    "holdout": {
+      "count": 17,
+      "hand": 17,
+      "kind": 0
+    }
+  },
+  "splits": {
+    "dev": {
+      "overall": {
+        "tp": 21,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_ci95": [
+          0.845,
+          1.0
+        ],
+        "recall_ci95": [
+          0.845,
+          1.0
+        ]
+      },
+      "per_rule": {
+        "KT001": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT002": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT003": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT004": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT005": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT006": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT007": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT008": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT009": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT010": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      },
+      "variant_accuracy": {
+        "correct": 21,
+        "total": 21,
+        "accuracy": 1.0
+      },
+      "fixtures_exact": {
+        "exact": 20,
+        "total": 20
+      }
+    },
+    "holdout": {
+      "overall": {
+        "tp": 17,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_ci95": [
+          0.816,
+          1.0
+        ],
+        "recall_ci95": [
+          0.816,
+          1.0
+        ]
+      },
+      "per_rule": {
+        "KT001": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT002": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT003": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT004": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT005": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT006": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT007": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT009": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT010": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      },
+      "variant_accuracy": {
+        "correct": 17,
+        "total": 17,
+        "accuracy": 1.0
+      },
+      "fixtures_exact": {
+        "exact": 17,
+        "total": 17
+      }
+    }
+  },
+  "mismatches": {
+    "dev": [],
+    "holdout": []
+  }
+}

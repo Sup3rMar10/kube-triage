@@ -1,0 +1,308 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "billing-6a5b4c3d2-aaaaa",
+        "namespace": "payments",
+        "uid": "uid-billing-6a5b4c3d2-aaaaa",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "billing",
+          "pod-template-hash": "6a5b4c3d2"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "billing-6a5b4c3d2",
+            "uid": "uid-billing-6a5b4c3d2",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "registry.example.com/shop/app:1.4.2",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "registry.example.com/payments/svc:3.2.1",
+            "imageID": "",
+            "ready": true,
+            "restartCount": 0,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "billing-6a5b4c3d2-bbbbb",
+        "namespace": "payments",
+        "uid": "uid-billing-6a5b4c3d2-bbbbb",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "billing",
+          "pod-template-hash": "6a5b4c3d2"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "billing-6a5b4c3d2",
+            "uid": "uid-billing-6a5b4c3d2",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "registry.example.com/shop/app:1.4.2",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "registry.example.com/payments/svc:3.2.1",
+            "imageID": "",
+            "ready": true,
+            "restartCount": 0,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "billing-7b6c5d4e3-ccccc",
+        "namespace": "payments",
+        "uid": "uid-billing-7b6c5d4e3-ccccc",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "billing",
+          "pod-template-hash": "7b6c5d4e3"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "billing-7b6c5d4e3",
+            "uid": "uid-billing-7b6c5d4e3",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "app",
+            "image": "docker.io/payments/ap1:1.2",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Pending",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "app",
+            "image": "docker.io/payments/ap1:1.2",
+            "imageID": "",
+            "ready": false,
+            "restartCount": 0,
+            "state": {
+              "waiting": {
+                "reason": "ErrImagePull",
+                "message": "rpc error: code = Unknown desc = failed to pull and unpack image \"docker.io/payments/ap1:1.2\": failed to resolve reference \"docker.io/payments/ap1:1.2\": pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-1",
+        "labels": {
+          "kubernetes.io/hostname": "worker-1"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    }
+  ]
+}
