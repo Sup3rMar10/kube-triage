@@ -126,6 +126,20 @@
       "note": "tag-not-found"
     },
     {
+      "name": "dev-kind-oom-limit-too-low",
+      "file": "dev/kind-oom-limit-too-low.json",
+      "split": "dev",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "oom-killed-6898f964b4-kkgm4",
+          "rule": "KT003",
+          "variant": "limit-too-low-to-start"
+        }
+      ],
+      "note": "real capture of broken/oom-killed.yaml as first written (24Mi limit): the container could not even start. Label written AFTER seeing the output, so this fixture is dev, not holdout."
+    },
+    {
       "name": "dev-latest-no-limits",
       "file": "dev/latest-no-limits.json",
       "split": "dev",
@@ -514,20 +528,6 @@
         }
       ],
       "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/latest-no-limits.yaml before capture"
-    },
-    {
-      "name": "holdout-kind-oom-killed",
-      "file": "holdout/kind-oom-killed.json",
-      "split": "holdout",
-      "source": "kind",
-      "expected": [
-        {
-          "subject": "oom-killed-6898f964b4-kkgm4",
-          "rule": "KT003",
-          "variant": "limit-set"
-        }
-      ],
-      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/oom-killed.yaml before capture"
     },
     {
       "name": "holdout-kind-pending-cpu",

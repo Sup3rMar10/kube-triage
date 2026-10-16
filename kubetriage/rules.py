@@ -145,7 +145,7 @@ def rule_crashloop(pod, cluster):
             src, last = "state", cur
         else:
             continue
-        if last.get("reason") == "OOMKilled":
+        if last.get("reason") == "OOMKilled" or "oom-killed" in last.get("message", "").lower():
             continue  # KT003 owns it
         if (name, "liveness") in probes or (name, "startup") in probes:
             continue  # KT006 owns it: the probe is what keeps killing the container
@@ -175,6 +175,26 @@ def rule_crashloop(pod, cluster):
 
 # ---- KT003 OOM -----------------------------------------------------------------------------------
 
+def _start_oom(pod, s, st, last) -> Finding:
+    """The limit is so low the container runtime itself is OOM-killed while setting the container up."""
+    name, limit = s["name"], _limit(s["spec"], "memory")
+    if waiting(st).get("message"):
+        ev = [_kv(f"{s['path']}.state.waiting.reason", waiting(st).get("reason")),
+              _kv(f"{s['path']}.state.waiting.message", _short(waiting(st)["message"]))]
+    else:
+        ev = [_kv(f"{s['path']}.lastState.terminated.reason", last.get("reason")),
+              _kv(f"{s['path']}.lastState.terminated.message", _short(last.get("message", "")))]
+    ev.append(_kv(f"{s['spec_path']}.resources.limits.memory", limit) if limit
+              else f"{s['spec_path']}.resources.limits.memory is not set")
+    return _make(pod, "KT003", "high", f'Container "{name}" cannot start: its {limit or "memory"} limit is too low',
+                 f'The memory limit on "{name}" is so low that the container runtime was OOM-killed while setting the '
+                 "container up, before the program even ran. This is not a leak: the limit is below the minimum any "
+                 "container needs.",
+                 ev, ["Raise resources.limits.memory (tens of MiB is the floor for a minimal image; real apps need far more).",
+                      f"Check usage of a similar running pod: kubectl top pod -n {pod_ns(pod)} --containers"],
+                 variant="limit-too-low-to-start", container=name)
+
+
 def rule_oom(pod, cluster):
     out = []
     for s in all_statuses(pod):
@@ -184,6 +204,9 @@ def rule_oom(pod, cluster):
             hit, where = cur, "state"
         elif last.get("reason") == "OOMKilled":
             hit, where = last, "lastState"
+        elif "oom-killed" in f"{waiting(st).get('message', '')} {last.get('message', '')}".lower():
+            out.append(_start_oom(pod, s, st, last))
+            continue
         else:
             continue
         name = s["name"]

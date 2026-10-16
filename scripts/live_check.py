@@ -111,15 +111,19 @@ def main(argv=None) -> int:
     ap.add_argument("--kubectl", default="kubectl")
     ap.add_argument("--context")
     ap.add_argument("--broken", default=str(ROOT / "broken"))
+    ap.add_argument("--only", help="comma-separated scenario names to run (default: all)")
     args = ap.parse_args(argv)
     kube = {"bin": args.kubectl, "context": args.context}
     wanted = scenarios(Path(args.broken))
+    if args.only:
+        wanted = {n: wanted[n] for n in args.only.split(",")}
 
     kubectl(["cluster-info"], kube)
     print(f"cluster ok; applying {len(wanted)} scenarios to namespace {NAMESPACE}")
     kubectl(["create", "namespace", NAMESPACE], kube, check=False)
     kubectl(["taint", "nodes", "--all", TAINT, "--overwrite"], kube)
-    kubectl(["apply", "-f", args.broken], kube)
+    for name in wanted:
+        kubectl(["apply", "-f", str(Path(args.broken) / f"{name}.yaml")], kube)
     start, last, results = time.time(), None, {}
     try:
         while True:

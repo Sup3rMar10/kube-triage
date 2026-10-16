@@ -104,6 +104,24 @@ def test_oom_without_limit_is_a_different_variant():
     assert ("KT003", "no-limit") in rules_of(run(p))
 
 
+START_OOM = ("failed to create containerd task: failed to create shim task: OCI runtime create failed: runc create failed: "
+             "unable to start container process: container init was OOM-killed (memory limit too low?)")
+
+
+def test_limit_so_low_the_container_cannot_start():
+    """Real message from a kind cluster: a 24Mi limit on busybox is below what the runtime needs to set it up."""
+    p = pod("p", NS, containers=[container("app", IMG, limits=("24Mi",))],
+            statuses=[cstatus("app", IMG, state=waiting("RunContainerError", START_OOM),
+                              last=term(128, reason="StartError", message=START_OOM), restarts=5)])
+    assert rules_of(run(p)) == [("KT003", "limit-too-low-to-start")]
+
+
+def test_start_oom_is_not_also_reported_as_a_generic_crash_loop():
+    p = pod("p", NS, statuses=[cstatus("app", IMG, state=waiting("CrashLoopBackOff"),
+                                       last=term(128, reason="StartError", message=START_OOM), restarts=5)])
+    assert [f.rule for f in run(p)] == ["KT003"]
+
+
 def test_oom_in_current_state():
     p = pod("p", NS, phase="Failed", statuses=[cstatus("app", IMG, state=term(137, reason="OOMKilled"))])
     assert ("KT003", "limit-set") in rules_of(run(p))
