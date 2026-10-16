@@ -1,5 +1,8 @@
 # scenario: oom-killed
 # expect: KT003/limit-set
+# The shell holds ~200 MB in a variable, which is more than the 96Mi limit, so the kernel OOM-kills the container.
+# (Limits below roughly 48Mi on a kind node on WSL2 do not even let the container start: see
+# fixtures/dev/kind-oom-limit-too-low.json.)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,7 +22,7 @@ spec:
       containers:
         - name: app
           image: busybox:1.36
-          command: ["sh", "-c", "dd if=/dev/zero of=/dev/shm/fill bs=1M count=60; sleep 3600"]
+          command: ["sh", "-c", "x=$(head -c 200000000 /dev/zero | tr '\\0' x); echo allocated; sleep 3600"]
           resources:
-            limits: {memory: 48Mi}
-            requests: {memory: 32Mi}
+            limits: {memory: 96Mi}
+            requests: {memory: 64Mi}

@@ -1,0 +1,217 @@
+{
+  "kubetriage_version": "0.1.0",
+  "fixtures": {
+    "dev": {
+      "count": 21,
+      "hand": 20,
+      "kind": 1
+    },
+    "holdout": {
+      "count": 32,
+      "hand": 17,
+      "kind": 15
+    }
+  },
+  "splits": {
+    "dev": {
+      "overall": {
+        "tp": 22,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_ci95": [
+          0.851,
+          1.0
+        ],
+        "recall_ci95": [
+          0.851,
+          1.0
+        ]
+      },
+      "per_rule": {
+        "KT001": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT002": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT003": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT004": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT005": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT006": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT007": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT008": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT009": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT010": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      },
+      "variant_accuracy": {
+        "correct": 22,
+        "total": 22,
+        "accuracy": 1.0
+      },
+      "fixtures_exact": {
+        "exact": 21,
+        "total": 21
+      }
+    },
+    "holdout": {
+      "overall": {
+        "tp": 32,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "precision_ci95": [
+          0.893,
+          1.0
+        ],
+        "recall_ci95": [
+          0.893,
+          1.0
+        ]
+      },
+      "per_rule": {
+        "KT001": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT002": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT003": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT004": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT005": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT006": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT007": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT008": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT009": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "KT010": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      },
+      "variant_accuracy": {
+        "correct": 32,
+        "total": 32,
+        "accuracy": 1.0
+      },
+      "fixtures_exact": {
+        "exact": 32,
+        "total": 32
+      }
+    }
+  },
+  "mismatches": {
+    "dev": [],
+    "holdout": []
+  }
+}

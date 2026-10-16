@@ -530,6 +530,20 @@
       "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/latest-no-limits.yaml before capture"
     },
     {
+      "name": "holdout-kind-oom-killed",
+      "file": "holdout/kind-oom-killed.json",
+      "split": "holdout",
+      "source": "kind",
+      "expected": [
+        {
+          "subject": "oom-killed-85669fbc59-p57sw",
+          "rule": "KT003",
+          "variant": "limit-set"
+        }
+      ],
+      "note": "captured from a kind cluster running Kubernetes v1.37.0; labels written in broken/oom-killed.yaml before capture"
+    },
+    {
       "name": "holdout-kind-pending-cpu",
       "file": "holdout/kind-pending-cpu.json",
       "split": "holdout",

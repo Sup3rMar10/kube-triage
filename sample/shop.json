@@ -1,0 +1,741 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  },
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "web-6b7c8d9e0-a1b2c",
+        "namespace": "shop",
+        "uid": "uid-web-6b7c8d9e0-a1b2c",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "web",
+          "pod-template-hash": "6b7c8d9e0"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-6b7c8d9e0",
+            "uid": "uid-web-6b7c8d9e0",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "web",
+            "image": "registry.example.com/shop/web:1.8.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "128Mi"
+              },
+              "requests": {
+                "memory": "96Mi",
+                "cpu": "100m"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "web",
+            "image": "registry.example.com/shop/web:1.8.0",
+            "imageID": "",
+            "ready": false,
+            "restartCount": 14,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "OOMKilled",
+                "startedAt": "2026-10-01T10:00:00Z",
+                "finishedAt": "2026-10-01T10:00:02Z",
+                "containerID": "containerd://abababababababababababababababababababababababababababababababab"
+              }
+            }
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "web-6b7c8d9e0-d3e4f",
+        "namespace": "shop",
+        "uid": "uid-web-6b7c8d9e0-d3e4f",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "web",
+          "pod-template-hash": "6b7c8d9e0"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-6b7c8d9e0",
+            "uid": "uid-web-6b7c8d9e0",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "web",
+            "image": "registry.example.com/shop/web:1.8.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "128Mi"
+              },
+              "requests": {
+                "memory": "96Mi",
+                "cpu": "100m"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "web",
+            "image": "registry.example.com/shop/web:1.8.0",
+            "imageID": "",
+            "ready": false,
+            "restartCount": 14,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {
+              "terminated": {
+                "exitCode": 137,
+                "reason": "OOMKilled",
+                "startedAt": "2026-10-01T10:00:00Z",
+                "finishedAt": "2026-10-01T10:00:02Z",
+                "containerID": "containerd://abababababababababababababababababababababababababababababababab"
+              }
+            }
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "web-6b7c8d9e0-g5h6i",
+        "namespace": "shop",
+        "uid": "uid-web-6b7c8d9e0-g5h6i",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "web",
+          "pod-template-hash": "6b7c8d9e0"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "web-6b7c8d9e0",
+            "uid": "uid-web-6b7c8d9e0",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "web",
+            "image": "registry.example.com/shop/web:1.8.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "128Mi"
+              },
+              "requests": {
+                "memory": "96Mi",
+                "cpu": "100m"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "web",
+            "image": "registry.example.com/shop/web:1.8.0",
+            "imageID": "",
+            "ready": true,
+            "restartCount": 0,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "api-5a4b3c2d1-j7k8l",
+        "namespace": "shop",
+        "uid": "uid-api-5a4b3c2d1-j7k8l",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "api",
+          "pod-template-hash": "5a4b3c2d1"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "api-5a4b3c2d1",
+            "uid": "uid-api-5a4b3c2d1",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api",
+            "image": "registry.example.com/shop/api:1.8.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "env": [
+              {
+                "name": "PAYMENTS_URL",
+                "valueFrom": {
+                  "configMapKeyRef": {
+                    "name": "api-config",
+                    "key": "PAYMENTS_URL"
+                  }
+                }
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Pending",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "api",
+            "image": "registry.example.com/shop/api:1.8.0",
+            "imageID": "",
+            "ready": false,
+            "restartCount": 0,
+            "state": {
+              "waiting": {
+                "reason": "CreateContainerConfigError",
+                "message": "couldn't find key PAYMENTS_URL in ConfigMap shop/api-config"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "worker-4c3d2e1f0-m9n0o",
+        "namespace": "shop",
+        "uid": "uid-worker-4c3d2e1f0-m9n0o",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "worker",
+          "pod-template-hash": "4c3d2e1f0"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "worker-4c3d2e1f0",
+            "uid": "uid-worker-4c3d2e1f0",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "worker",
+            "image": "registry.example.com/shop/worker:1.9.0",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Pending",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "False",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "worker",
+            "image": "registry.example.com/shop/worker:1.9.0",
+            "imageID": "",
+            "ready": false,
+            "restartCount": 0,
+            "state": {
+              "waiting": {
+                "reason": "ImagePullBackOff",
+                "message": "Back-off pulling image \"registry.example.com/shop/worker:1.9.0\""
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Event",
+      "metadata": {
+        "name": "worker-4c3d2e1f0-m9n0o.4e782043",
+        "namespace": "shop"
+      },
+      "involvedObject": {
+        "kind": "Pod",
+        "namespace": "shop",
+        "name": "worker-4c3d2e1f0-m9n0o",
+        "uid": "uid-worker-4c3d2e1f0-m9n0o",
+        "fieldPath": "spec.containers{worker}"
+      },
+      "reason": "Failed",
+      "message": "Failed to pull image \"registry.example.com/shop/worker:1.9.0\": rpc error: code = NotFound desc = failed to pull and unpack image \"registry.example.com/shop/worker:1.9.0\": failed to resolve reference \"registry.example.com/shop/worker:1.9.0\": registry.example.com/shop/worker:1.9.0: not found",
+      "type": "Warning",
+      "count": 6,
+      "firstTimestamp": "2026-10-01T10:00:00Z",
+      "lastTimestamp": "2026-10-01T10:05:00Z",
+      "source": {
+        "component": "kubelet"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "orders-db-0",
+        "namespace": "shop",
+        "uid": "uid-orders-db-0",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "orders-db-0"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "orders-db",
+            "uid": "uid-orders-db",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "db",
+            "image": "registry.example.com/shop/postgres:16.4",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "limits": {
+                "memory": "256Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "volumes": [
+          {
+            "name": "data",
+            "persistentVolumeClaim": {
+              "claimName": "orders-data"
+            }
+          }
+        ]
+      },
+      "status": {
+        "phase": "Pending",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "False",
+            "reason": "Unschedulable",
+            "message": "0/2 nodes are available: persistentvolumeclaim \"orders-data\" not found. preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling.",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": []
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "name": "cache-3d2e1f0a9-p1q2r",
+        "namespace": "shop",
+        "uid": "uid-cache-3d2e1f0a9-p1q2r",
+        "creationTimestamp": "2026-10-01T10:00:00Z",
+        "labels": {
+          "app": "cache",
+          "pod-template-hash": "3d2e1f0a9"
+        },
+        "resourceVersion": "1000",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "name": "cache-3d2e1f0a9",
+            "uid": "uid-cache-3d2e1f0a9",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "cache",
+            "image": "redis:latest",
+            "imagePullPolicy": "IfNotPresent",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "memory": "64Mi"
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst",
+        "schedulerName": "default-scheduler",
+        "terminationGracePeriodSeconds": 30,
+        "nodeName": "worker-1"
+      },
+      "status": {
+        "phase": "Running",
+        "qosClass": "Burstable",
+        "conditions": [
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastTransitionTime": "2026-10-01T10:00:00Z"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "name": "cache",
+            "image": "redis:latest",
+            "imageID": "",
+            "ready": true,
+            "restartCount": 0,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-01T10:00:00Z"
+              }
+            },
+            "lastState": {}
+          }
+        ],
+        "hostIP": "10.0.0.11",
+        "podIP": "10.244.1.7",
+        "startTime": "2026-10-01T10:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-1",
+        "labels": {
+          "kubernetes.io/hostname": "worker-1"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "name": "worker-2",
+        "labels": {
+          "kubernetes.io/hostname": "worker-2"
+        }
+      },
+      "spec": {},
+      "status": {
+        "capacity": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "allocatable": {
+          "cpu": "4",
+          "memory": "16Gi",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "type": "MemoryPressure",
+            "status": "False",
+            "message": "kubelet has sufficient memory available"
+          },
+          {
+            "type": "DiskPressure",
+            "status": "False",
+            "message": "kubelet has no disk pressure"
+          },
+          {
+            "type": "PIDPressure",
+            "status": "False",
+            "message": "kubelet has sufficient PID available"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "reason": "KubeletReady",
+            "message": "kubelet is posting ready status"
+          }
+        ]
+      }
+    }
+  ]
+}

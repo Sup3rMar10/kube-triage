@@ -120,6 +120,10 @@ def main(argv=None) -> int:
 
     kubectl(["cluster-info"], kube)
     print(f"cluster ok; applying {len(wanted)} scenarios to namespace {NAMESPACE}")
+    for _ in range(30):      # a namespace deleted a moment ago may still be terminating
+        if kubectl(["get", "namespace", NAMESPACE, "-o", "jsonpath={.status.phase}"], kube, check=False).stdout != "Terminating":
+            break
+        time.sleep(5)
     kubectl(["create", "namespace", NAMESPACE], kube, check=False)
     kubectl(["taint", "nodes", "--all", TAINT, "--overwrite"], kube)
     for name in wanted:
@@ -142,7 +146,7 @@ def main(argv=None) -> int:
             capture(kube, wanted)
     finally:
         if not args.keep:
-            kubectl(["delete", "namespace", NAMESPACE, "--wait=false"], kube, check=False)
+            kubectl(["delete", "namespace", NAMESPACE, "--wait=true", "--timeout=180s"], kube, check=False)
             kubectl(["taint", "nodes", "--all", "kt-demo-"], kube, check=False)
 
     passed = sum(1 for r in results.values() if r["passed"])
